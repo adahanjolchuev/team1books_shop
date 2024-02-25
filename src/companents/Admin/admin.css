@@ -1,0 +1,53 @@
+.admin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin: 40px 0;
+}
+.inputsAdmin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+.inputsAdmin input {
+  width: 321.35px;
+  height: 52px;
+  padding: 10px 20px;
+  outline: none;
+  border: 3px solid rgb(1, 0, 73);
+  border-radius: 5px;
+}
+
+.admin button {
+  font-family: sans-serif;
+  color: rgb(1, 0, 73);
+  font-size: 15px;
+  font-weight: 600;
+  width: 350px;
+  height: 51px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background: transparent;
+  border: 3px solid rgb(1, 0, 73);
+  border-radius: 5px;
+  text-align: center;
+}
+.admin h3 {
+  font-family: sans-serif;
+  font-size: 35px;
+  font-weight: 600;
+  line-height: 20px;
+}
+.inputs_admin {
+  display: flex;
+  gap: 20px;
+}
+.imgInput {
+  width: 349px;
+  height: 300px;
+  text-align: center;
+  background: rgb(238, 237, 237);
+}

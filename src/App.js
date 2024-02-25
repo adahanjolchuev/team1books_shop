@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Footer from "./companents/Footer";
+import Header from "./companents/Header";
+import Home from "./companents/pages/Home";
+import Search from "./companents/Search";
+import { Route, Routes } from "react-router-dom";
+import Admin from "./companents/Admin";
+import BookDetals from "./companents/BookDetals";
+import Order from "./companents/Order";
 
 function App() {
+  const [value, setValue] = useState("");
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header setValue={setValue} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/search" element={<Search nameBooks={value} />} />
+        <Route path="/admin" element={<Admin/>}></Route>
+        <Route path="/book-detals/:bookId" element={<BookDetals/>}/>
+        <Route path="/order" element={<Order/>} />
+      </Routes>
+      <Footer />
     </div>
   );
 }
