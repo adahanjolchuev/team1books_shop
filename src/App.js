@@ -7,6 +7,8 @@ import { Route, Routes } from "react-router-dom";
 import Admin from "./companents/Admin";
 import BookDetals from "./companents/BookDetals";
 import Order from "./companents/Order";
+import Modalka from "./companents/pages/Modalka/modalka";
+import Books from "./companents/pages/Home/Books";
 
 function App() {
   const [value, setValue] = useState("");
@@ -19,7 +21,10 @@ function App() {
         <Route path="/admin" element={<Admin/>}></Route>
         <Route path="/book-detals/:bookId" element={<BookDetals/>}/>
         <Route path="/order" element={<Order/>} />
+        <Route path="/modalke" element={<Modalka/>}/>
+        <Route path="/books" element={<Books/>}/>
       </Routes>
+      <Modalka/>
       <Footer />
     </div>
   );

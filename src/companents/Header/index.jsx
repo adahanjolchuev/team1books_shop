@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import "./header.css";
 import { FaSearch } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import { AiOutlineUser } from "react-icons/ai";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useMainContext } from "../../context/useProduct";
 
 function Header({ setValue, nameBooks }) {
+  const { setModal, modal } = useMainContext();
   const { order } = useMainContext();
-  const {searchProduct}  = useMainContext()
+  // const { searchProduct } = useMainContext();
   let nav = useNavigate();
+
+  
   return (
     <>
       <div id="header">
@@ -31,12 +34,10 @@ function Header({ setValue, nameBooks }) {
                 <button
                   onClick={() => {
                     nav("/search");
-                    }
-                  }
+                  }}
                 >
                   <FaSearch />
                 </button>
-                {/* </Link> */}
               </div>
               <div className="header_icons">
                 <div className="korzina_btn">
@@ -73,22 +74,20 @@ function Header({ setValue, nameBooks }) {
                   </button>
                 </div>
                 <div className="admin_btn">
-                  {/* <Link to={"/admin"}> */}
                   <p
                     onClick={() => {
-                      nav("/admin");
+                      setModal(!modal);
                     }}
                   >
                     <AiOutlineUser />
                   </p>
                   <button
                     onClick={() => {
-                      nav("/admin");
+                      setModal(!modal);
                     }}
                   >
                     Админ
                   </button>
-                  {/* </Link> */}
                 </div>
               </div>
             </div>

@@ -1,33 +1,41 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./bookDetals.css";
 import { useMainContext } from "../../context/useProduct";
 
 function BookDetals() {
   const { counter, setCounter } = useMainContext();
-  // const [btns, setBtns] = useState(false);
-  const [detal, setDetal] = useState([]);
-  const [description, setDescription] = useState(false);
+  const { detal, setDetal } = useMainContext();
+  const { description, setDescription } = useMainContext();
   const { order, setOrder } = useMainContext();
-
+  const { book, setBook } = useMainContext();
   const { bookId } = useParams();
+  const nav = useNavigate();
 
+  function placeOrder() {
+    setOrder(order + 1);
+    localStorage.setItem("counter", JSON.stringify(order + 1));
+  }
+  function getProduct() {
+    let data = JSON.parse(localStorage.getItem("books")) || [];
+    setBook(data);
+  }
   function getDetal() {
     let data = JSON.parse(localStorage.getItem("books")) || [];
     data = data.filter((el) => el.id == bookId);
     setDetal(data);
-    // console.log(data);
   }
 
   function getOrder(el) {
-    let orders = JSON.parse(localStorage.getItem("orders")) || [];
-    let res = orders.some((il) => {
-      return el.id == il.id;
+    let savedData = JSON.parse(localStorage.getItem("orders")) || [];
+    let res = savedData.some((il) => {
+      return el.id === il.id;
     });
-    if (res == false) {
-      orders.push(el);
-      localStorage.setItem("orders", JSON.stringify(orders));
-      setOrder(order + 1);
+    console.log(res);
+    if (res === false) {
+      savedData.push(el);
+      localStorage.setItem("orders", JSON.stringify(savedData));
+      placeOrder(el);
     } else {
       alert("У вас уже есть такая книга");
     }
@@ -35,6 +43,7 @@ function BookDetals() {
 
   useEffect(() => {
     getDetal();
+    getProduct();
   }, []);
 
   return (
@@ -74,14 +83,14 @@ function BookDetals() {
                           fontSize: "15px",
                           padding: "0",
                           margin: "0",
-                          marginLeft: "10px",
+                          color: "#181818",
                         }}
                         className="descriptionBtn"
                         onClick={() => {
                           setDescription(!description);
                         }}
                       >
-                        {description ? "скрыть" : "далее..."}
+                        {description ? "...скрыть" : "...далее"}
                       </button>
                     </h3>
                   </div>
@@ -109,10 +118,42 @@ function BookDetals() {
                       getOrder(el);
                     }}
                   >
-                    Заказать сейчас
+                    Добавить в корзину
                   </button>
                 </div>
               </>
+            ))}
+          </div>
+        </div>
+        <div className="container">
+          <h1
+            style={{
+              fontFamily: "sans-serif",
+              color: "#000F35",
+              margin: "40px 0",
+            }}
+          >
+           Рекомендация
+          </h1>
+          <div
+            style={{
+              display: "flex",
+              overflow: "scroll",
+              gap: "30px",
+              margin: "20px 0",
+            }}
+            className="blog_books"
+          >
+            {book.map((el) => (
+              <div
+                onClick={() => nav(`/book-detals/${el.id}`)}
+                className="block_book"
+              >
+                <img src={el.img} alt="" />
+                <h2>{el.name}</h2>
+                {/* </Link> */}
+                <p>{el.price}сом</p>
+              </div>
             ))}
           </div>
         </div>
@@ -120,5 +161,4 @@ function BookDetals() {
     </>
   );
 }
-
 export default BookDetals;

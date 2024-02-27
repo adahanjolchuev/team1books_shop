@@ -1,0 +1,77 @@
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+}
+.modal_content {
+  padding: 10px 15px;
+  border-radius: 12px;
+  background: white;
+  width: 350px;
+  height: 300px;
+}
+.Xbtn {
+  display: flex;
+  justify-content: end;
+}
+.Xbtn button {
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+.Xbtn button:hover {
+  background: rgb(157, 144, 144);
+  border-radius: 5px;
+  width: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+}
+.inputsModal {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 15px;
+  align-content: center;
+  margin-top: 40px;
+  padding: 0 45px;
+}
+
+.inputsModal input {
+  padding: 10px 20px;
+  width: 220px;
+  font-weight: 700;
+  outline: none;
+  border-radius: 5px;
+  border: solid 3px #010049;
+}
+.modal_content h4 {
+  font-family: Mochiy Pop One;
+  font-size: 18px;
+  color: #010049;
+  display: flex;
+  justify-content: center;
+}
+
+.enter {
+  /* width: 90px; */
+  padding: 10px 20px;
+  background: #010049;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}

@@ -72,3 +72,15 @@ a {
   font-weight: 600;
   letter-spacing: 0.5px;
 }
+.modalka {
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  background-color: white;
+  display: none;
+  position: absolute;
+  top: 200px;
+  left: 550px;
+  border: "3px solid black";
+
+}
