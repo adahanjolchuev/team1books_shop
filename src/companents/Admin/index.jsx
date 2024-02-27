@@ -3,28 +3,52 @@ import "./admin.css";
 import { useNavigate } from "react-router-dom";
 
 function Admin() {
-  const [img, setImg] = useState("");
+  const [imgFile, setImgFile] = useState(null);
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
-  const [author, setAutor] = useState("");
+  const [author, setAuthor] = useState("");
   let nav = useNavigate("");
 
-  function getAdmin() { 
-    let obj = {
-      id: Date.now(),
-      img,
-      name,
-      price,
-      category,
-      description,
-      author,
-    };
-    let data = JSON.parse(localStorage.getItem("books")) || [];
-    data.push(obj);
-    localStorage.setItem("books", JSON.stringify(data));
-    nav("/");
+  function handleImageChange(event) {
+    const file = event.target.files[0];
+    setImgFile(file);
+  }
+
+  function getAdmin() {
+    if (
+      imgFile &&
+      name &&
+      price &&
+      author &&
+      category &&
+      description !== ""
+    ) {
+      const reader = new FileReader();
+      reader.readAsDataURL(imgFile);
+      reader.onload = function () {
+        const imgData = reader.result;
+        const obj = {
+          id: Date.now(),
+          img: imgData,
+          name,
+          price,
+          category,
+          description,
+          author,
+        };
+        let data = JSON.parse(localStorage.getItem("books")) || [];
+        data.push(obj);
+        localStorage.setItem("books", JSON.stringify(data));
+        nav("/");
+      };
+      reader.onerror = function (error) {
+        console.log("Error: ", error);
+      };
+    } else {
+      alert("Заполните все поля!!!");
+    }
   }
 
   return (
@@ -33,51 +57,15 @@ function Admin() {
         <div className="container">
           <div className="admin">
             <h3>ADMIN</h3>
-            <div
-              className="inputs_admin
-            "
-            >
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: "20px",
-                }}
-                className="imgSave"
-              >
+            <div className="inputs_admin">
+              <div className="imgSave">
                 <input
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
                   className="imgInput"
-                  onChange={(event) => {
-                    setImg(event.target.value);
-                  }}
-                  type="text"
-                  placeholder="upload img"
-                  value={img}
+                  onChange={handleImageChange}
+                  type="file"
+                  accept="image/"
                 />
-                <button
-                  onClick={() => {
-                    if (
-                      img &&
-                      name &&
-                      price &&
-                      author &&
-                      category &&
-                      description !== ""
-                    ) {
-                      getAdmin();
-                    } else {
-                      alert("запольните все поля!!!");
-                    }
-                  }}
-                >
-                  save
-                </button>
+                <button onClick={getAdmin}>Save</button>
               </div>
               <div className="inputsAdmin">
                 <input
@@ -85,7 +73,7 @@ function Admin() {
                     setName(event.target.value);
                   }}
                   type="text"
-                  placeholder="name..."
+                  placeholder="Name..."
                   value={name}
                 />
                 <input
@@ -94,7 +82,7 @@ function Admin() {
                   }}
                   className="categoryInput"
                   type="text"
-                  placeholder="category"
+                  placeholder="Category"
                   value={category}
                 />
                 <input
@@ -102,24 +90,25 @@ function Admin() {
                   onChange={(event) => {
                     setPrice(event.target.value);
                   }}
-                  type="text"
-                  placeholder="price..."
+                  type="number"
+                  placeholder="Price..."
                   value={price}
+
                 />
                 <input
                   onChange={(e) => {
                     setDescription(e.target.value);
                   }}
                   type="text"
-                  placeholder="description..."
+                  placeholder="Description..."
                   value={description}
                 />
                 <input
                   onChange={(e) => {
-                    setAutor(e.target.value);
+                    setAuthor(e.target.value);
                   }}
                   type="text"
-                  placeholder="author"
+                  placeholder="Author"
                   value={author}
                 />
               </div>

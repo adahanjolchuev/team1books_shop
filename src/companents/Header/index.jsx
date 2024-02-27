@@ -58,10 +58,10 @@ function Header({ setValue, nameBooks }) {
                         borderRadius: "20px",
                         width: "15px",
                         height: "15px",
-                        background: order == 0 ? "none" : "red",
+                        background: order === 0 ? "none" : "red",
                       }}
                     >
-                      {order == 0 ? "" : order}
+                      {order === 0 ? "" : order}
                     </div>
                   </p>
                   <button
