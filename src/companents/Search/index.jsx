@@ -7,7 +7,8 @@ import "./search.css";
 function Search({ nameBooks }) {
   const [searchProduct, setSearchProduct] = useState([]);
   const { bookId } = useParams();
-  const { setDetal, detal } = useMainContext();
+  // const { setDetal, detal } = useMainContext();
+  const {book, setBook} = useMainContext()
 
   function getSearch() {
     let data = JSON.parse(localStorage.getItem("books")) || [];
@@ -19,7 +20,7 @@ function Search({ nameBooks }) {
   function getDetal() {
     let data = JSON.parse(localStorage.getItem("books")) || [];
     data = data.filter((el) => el.id == bookId);
-    setDetal(data);
+    setBook(data);
   }
 
   useEffect(() => {
@@ -30,7 +31,10 @@ function Search({ nameBooks }) {
   return (
     <div className="container">
       <div className="search">
-        <div className="blocks_books">
+        <div
+          style={{ display: "flex", justifyContent: "center" }}
+          className="blocks_books"
+        >
           {res.length === 0 ? (
             <div className="searchAlerts">
               <div
@@ -71,19 +75,7 @@ function Search({ nameBooks }) {
             </div>
           ) : (
             res.map((el) => (
-              <div
-                onClick={() =>
-                  detal.map((el) => (
-                    <Link to={`/books-detals/${el.id}`}>
-                      <div>
-                        <img src={el.img} alt="" />
-                        <h2>{el.name}</h2>
-                      </div>
-                    </Link>
-                  ))
-                }
-                className="block_book"
-              >
+              <div className="block_book">
                 <img src={el.img} alt="" />
                 <h2>{el.name}</h2>
               </div>

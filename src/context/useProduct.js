@@ -11,8 +11,7 @@ const UseProduct = ({ children }) => {
   const [modal, setModal] = useState(false);
   const [book, setBook] = useState([]);
   const [detal, setDetal] = useState([]);
-
-
+  const [price, setPrice] = useState([]);
 
   useEffect(() => {
     let savedData = JSON.parse(localStorage.getItem("orders"));
@@ -23,6 +22,10 @@ const UseProduct = ({ children }) => {
     if (saveCounter) {
       setOrder(saveCounter);
     }
+    // let addPrice = JSON.parse(localStorage.getItem("price")) || [];
+    // if (addPrice) {
+    //   setPrice(addPrice);
+    // }
   }, []);
 
   let values = {
@@ -39,7 +42,9 @@ const UseProduct = ({ children }) => {
     book,
     setBook,
     detal,
-    setDetal
+    setDetal,
+    price,
+    setPrice,
   };
 
   return (

@@ -1,3 +1,7 @@
+#order {
+  overflow-y: auto;
+  max-height: 400px;
+}
 .orders {
   display: flex;
   justify-content: center;
@@ -39,4 +43,10 @@
 }
 .order_text button:hover {
   border-bottom: red 3px solid;
+}
+
+::-webkit-scrollbar-track-piece {
+  /* display: block; */
+  color: red;
+  background: blue;
 }

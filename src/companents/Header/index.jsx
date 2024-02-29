@@ -18,11 +18,11 @@ function Header({ setValue, nameBooks }) {
       <div id="header">
         <div className="container">
           <div className="header">
-            <h1 onClick={() => [nav("/")]}>BOOKShop</h1>
+            <h1 onClick={() => nav("/")}>BOOKShop</h1>
 
             <div className="header_right">
               <div className="inputs">
-                <input
+                <input onClick={()=> nav('/search')}
                   onInput={(e) => {
                     setValue(e.target.value);
                   }}

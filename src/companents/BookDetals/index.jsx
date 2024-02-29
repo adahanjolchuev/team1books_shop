@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./bookDetals.css";
 import { useMainContext } from "../../context/useProduct";
@@ -9,7 +9,9 @@ function BookDetals() {
   const { description, setDescription } = useMainContext();
   const { order, setOrder } = useMainContext();
   const { book, setBook } = useMainContext();
+  // const { setPrice } = useMainContext();
   const { bookId } = useParams();
+
   const nav = useNavigate();
 
   function placeOrder() {
@@ -26,6 +28,13 @@ function BookDetals() {
     setDetal(data);
   }
 
+  function up() {
+    window.scroll({
+      left: "0",
+      top: "0",
+      behavior: "smooth",
+    });
+  }
   function getOrder(el) {
     let savedData = JSON.parse(localStorage.getItem("orders")) || [];
     let res = savedData.some((il) => {
@@ -44,7 +53,7 @@ function BookDetals() {
   useEffect(() => {
     getDetal();
     getProduct();
-  }, []);
+  }, [bookId]);
 
   return (
     <>
@@ -61,7 +70,7 @@ function BookDetals() {
                   </h2>
 
                   <h2>{el.name}</h2>
-                  <p>{el.price}сом</p>
+                  <p>{el.price * counter}сом</p>
                   <h4
                     style={{
                       fontFamily: "sans-serif",
@@ -90,7 +99,7 @@ function BookDetals() {
                           setDescription(!description);
                         }}
                       >
-                        {description ? "...скрыть" : "...далее"}
+                        {description ? "скрыть" : "...далее"}
                       </button>
                     </h3>
                   </div>
@@ -133,7 +142,7 @@ function BookDetals() {
               margin: "40px 0",
             }}
           >
-           Рекомендация
+            Рекомендация
           </h1>
           <div
             style={{
@@ -146,7 +155,10 @@ function BookDetals() {
           >
             {book.map((el) => (
               <div
-                onClick={() => nav(`/book-detals/${el.id}`)}
+                onClick={() => {
+                  nav(`/book-detals/${el.id}`);
+                  up();
+                }}
                 className="block_book"
               >
                 <img src={el.img} alt="" />

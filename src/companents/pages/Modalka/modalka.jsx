@@ -21,9 +21,11 @@ function Modalka() {
     if (password === "admin") {
       nav("/admin");
       setModal(false);
-      setPassword('')
+      setPassword("");
+    } else if (password === "") {
+      alert("заполните все поля!!!");
     } else {
-      alert("Неверный пароль!!!");
+      alert("Неверный пароль!");
     }
   };
 

@@ -2,4 +2,5 @@
   background: url(../../../../images/heroImg.png) no-repeat center/cover;
   width: 1536px;
   height: 510px;
+  object-fit: cover;
 }
