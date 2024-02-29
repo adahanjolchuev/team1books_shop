@@ -17,14 +17,7 @@ function Admin() {
   }
 
   function getAdmin() {
-    if (
-      imgFile &&
-      name &&
-      price &&
-      author &&
-      category &&
-      description !== ""
-    ) {
+    if (imgFile && name && price && author && category && description !== "") {
       const reader = new FileReader();
       reader.readAsDataURL(imgFile);
       reader.onload = function () {
@@ -93,7 +86,6 @@ function Admin() {
                   type="number"
                   placeholder="Price..."
                   value={price}
-
                 />
                 <input
                   onChange={(e) => {

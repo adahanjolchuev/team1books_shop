@@ -24,6 +24,11 @@
   gap: 40px 40px;
   margin: 50px 0;
 }
+.block_book img:hover {
+  transform: scale(1.1);
+  transition: 0.9s;
+  box-shadow: -1px 2px 19px 0px blue;
+}
 
 .block_book img {
   width: 250px;
@@ -36,7 +41,7 @@
   width: 240px;
   color: black;
   font-family: sans-serif;
-  margin-top: 5px;
+  margin-top: 30px;
 }
 .block_book p {
   color: black;

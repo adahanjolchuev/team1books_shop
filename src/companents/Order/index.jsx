@@ -105,13 +105,15 @@ function Order() {
           <div id="order">
             <div className="container">
               <div className="order">
-                <div className="orders">
+                <div
+                  className="orders"
+                >
                   <img src={el.img} alt="" />
                   <div className="order_text">
                     <h1>{el.author}</h1>
                     <h2>{el.name}</h2>
                     <p>quantity: {counter}</p>
-                    <h3>{el.price}сом</h3>
+                    <h3>{el.price * counter}сом</h3>
                     <button
                       onClick={() => {
                         if (order >= 1) {
