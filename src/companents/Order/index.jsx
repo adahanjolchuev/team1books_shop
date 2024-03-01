@@ -55,6 +55,7 @@ function Order() {
               marginTop: "90px",
             }}
           >
+
             <center>
               <img
                 style={{ width: "450px" }}
@@ -117,6 +118,56 @@ function Order() {
                           if (order >= 1) {
                             setOrder(order - 1);
                           }
+
+            КОРЗИНА ПУСТА
+          </h3>
+          <h4
+            style={{
+              color: "gray",
+              fontFamily: "sans-serif",
+              fontWeight: "500",
+            }}
+          >
+            Кажется у вас нет товаров в корзине
+          </h4>
+          <button
+            onClick={() => nav("/books")}
+            style={{
+              color: "white",
+              background: "black",
+              padding: "10px",
+              borderRadius: "30px",
+              border: "none",
+              width: "170px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "5px",
+            }}
+          >
+            Перейти на товар <CgArrowRightO />
+          </button>
+        </div>
+      ) : (
+        basket.map((el) => (
+          <div id="order">
+            <div className="container">
+              <div className="order">
+                <div
+                  className="orders"
+                >
+                  <img src={el.img} alt="" />
+                  <div className="order_text">
+                    <h1>{el.author}</h1>
+                    <h2>{el.name}</h2>
+                    <p>quantity: {counter}</p>
+                    <h3>{el.price * counter}сом</h3>
+                    <button
+                      onClick={() => {
+                        if (order >= 1) {
+                          setOrder(order - 1);
+                        }
+
 
                           clearCount();
                           delBooks(el.id);

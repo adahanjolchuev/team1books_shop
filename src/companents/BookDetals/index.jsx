@@ -68,7 +68,11 @@ function BookDetals() {
                   </h2>
 
                   <h2>{el.name}</h2>
+
                   <p>{el.price * el.count}сом</p>
+
+                  <p>{el.price * counter}сом</p>
+
                   <h4
                     style={{
                       fontFamily: "sans-serif",

@@ -21,8 +21,12 @@ function Header({ setValue, nameBooks }) {
 
             <div className="header_right">
               <div className="inputs">
+
                 <input
                   onClick={() => nav("/search")}
+
+                <input onClick={()=> nav('/search')}
+
                   onInput={(e) => {
                     setValue(e.target.value);
                   }}
