@@ -21,7 +21,11 @@ function Modalka() {
     if (password === "admin") {
       nav("/admin");
       setModal(false);
+
+      // setPassword("");
+
       setPassword("");
+
     } else if (password === "") {
       alert("заполните все поля!!!");
     } else {
@@ -53,7 +57,7 @@ function Modalka() {
           <input
             onChange={handlePasswordChange}
             type={passwordVisible ? "text" : "password"}
-            placeholder="Password..."
+            placeholder="Пароль..."
             value={password}
           />
           <div

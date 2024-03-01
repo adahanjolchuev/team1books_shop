@@ -6,7 +6,6 @@ import { CgArrowRightO } from "react-icons/cg";
 
 function Order() {
   const [basket, setBasket] = useState([]);
-  const { counter } = useMainContext();
   const { order, setOrder } = useMainContext();
   const { setBox } = useMainContext();
   const nav = useNavigate();
@@ -43,34 +42,83 @@ function Order() {
     getOrder();
   }, []);
   return (
-    <div>
-      {basket.length == "" ? (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "20px",
-            height: "500px",
-            marginTop: "90px",
-          }}
-        >
-          <center>
-            <img
-              style={{ width: "450px" }}
-              src="https://www.matsuri72.ru/images/empty-cart.png"
-              alt=""
-            />
-          </center>
-          <h3
+    <div className="orderPart">
+      <div className="container">
+        {basket.length == "" ? (
+          <div
             style={{
               display: "flex",
-              // justifyContent: "center",
+              flexDirection: "column",
               alignItems: "center",
-              fontFamily: "sans-serif",
-              color: "red",
+              gap: "20px",
+              height: "500px",
+              marginTop: "90px",
             }}
           >
+
+            <center>
+              <img
+                style={{ width: "450px" }}
+                src="https://www.matsuri72.ru/images/empty-cart.png"
+                alt=""
+              />
+            </center>
+            <h3
+              style={{
+                display: "flex",
+                // justifyContent: "center",
+                alignItems: "center",
+                fontFamily: "sans-serif",
+                color: "red",
+              }}
+            >
+              КОРЗИНА ПУСТА
+            </h3>
+            <h4
+              style={{
+                color: "gray",
+                fontFamily: "sans-serif",
+                fontWeight: "500",
+              }}
+            >
+              Кажется у вас нет товаров в корзине
+            </h4>
+            <button
+              onClick={() => nav("/books")}
+              style={{
+                color: "white",
+                background: "black",
+                padding: "10px",
+                borderRadius: "30px",
+                border: "none",
+                width: "170px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "5px",
+              }}
+            >
+              Перейти на товар <CgArrowRightO />
+            </button>
+          </div>
+        ) : (
+          basket.map((el) => (
+            <div id="order">
+              <div className="container">
+                <div className="order">
+                  <div className="orders">
+                    <img src={el.img} alt="" />
+                    <div className="order_text">
+                      <h1>{el.author}</h1>
+                      <h2>{el.name}</h2>
+                      <p>Количества: {el.count}</p>
+                      <h3>{el.price * el.count}сом</h3>
+                      <button
+                        onClick={() => {
+                          if (order >= 1) {
+                            setOrder(order - 1);
+                          }
+
             КОРЗИНА ПУСТА
           </h3>
           <h4
@@ -120,20 +168,22 @@ function Order() {
                           setOrder(order - 1);
                         }
 
-                        clearCount();
-                        delBooks(el.id);
-                        getOrder();
-                      }}
-                    >
-                      remove books
-                    </button>
+
+                          clearCount();
+                          delBooks(el.id);
+                          getOrder();
+                        }}
+                      >
+                        Удалять
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))
-      )}
+          ))
+        )}
+      </div>
     </div>
   );
 }

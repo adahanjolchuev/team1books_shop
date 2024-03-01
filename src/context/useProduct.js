@@ -5,7 +5,6 @@ export const useMainContext = () => useContext(useMainProduct);
 
 const UseProduct = ({ children }) => {
   const [description, setDescription] = useState(false);
-  const [counter, setCounter] = useState(1);
   const [order, setOrder] = useState(0);
   const [box, setBox] = useState([]);
   const [modal, setModal] = useState(false);
@@ -29,8 +28,6 @@ const UseProduct = ({ children }) => {
   }, []);
 
   let values = {
-    counter,
-    setCounter,
     order,
     setOrder,
     modal,

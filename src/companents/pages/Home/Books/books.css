@@ -11,13 +11,21 @@
   font-size: 25px;
 }
 .books_text select {
-  background: blue;
+  background: #010049;
   color: white;
-  padding: 10px 20px 10px 20px;
+  padding: 10px 40px 10px 40px;
   border-radius: 5px;
   border: none;
   outline: none;
 }
+.books_text select:hover {
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+.books_text select option {
+  margin: 100px 0;
+}
+
 .blocks_books {
   display: flex;
   flex-wrap: wrap;

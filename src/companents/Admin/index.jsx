@@ -30,6 +30,7 @@ function Admin() {
           category,
           description,
           author,
+          count: 1,
         };
         let data = JSON.parse(localStorage.getItem("books")) || [];
         data.push(obj);
@@ -49,7 +50,7 @@ function Admin() {
       <div id="admin">
         <div className="container">
           <div className="admin">
-            <h3>ADMIN</h3>
+            <h3>АДМИН</h3>
             <div className="inputs_admin">
               <div className="imgSave">
                 <input
@@ -58,7 +59,7 @@ function Admin() {
                   type="file"
                   accept="image/"
                 />
-                <button onClick={getAdmin}>Save</button>
+                <button onClick={getAdmin}>Создавать</button>
               </div>
               <div className="inputsAdmin">
                 <input
@@ -66,7 +67,7 @@ function Admin() {
                     setName(event.target.value);
                   }}
                   type="text"
-                  placeholder="Name..."
+                  placeholder="ИМЯ..."
                   value={name}
                 />
                 <input
@@ -75,7 +76,7 @@ function Admin() {
                   }}
                   className="categoryInput"
                   type="text"
-                  placeholder="Category"
+                  placeholder="ЖАНР..."
                   value={category}
                 />
                 <input
@@ -84,7 +85,7 @@ function Admin() {
                     setPrice(event.target.value);
                   }}
                   type="number"
-                  placeholder="Price..."
+                  placeholder="ЦЕНА..."
                   value={price}
                 />
                 <input
@@ -92,7 +93,7 @@ function Admin() {
                     setDescription(e.target.value);
                   }}
                   type="text"
-                  placeholder="Description..."
+                  placeholder="ОПИСАНИЕ..."
                   value={description}
                 />
                 <input
@@ -100,7 +101,7 @@ function Admin() {
                     setAuthor(e.target.value);
                   }}
                   type="text"
-                  placeholder="Author"
+                  placeholder="АВТОР..."
                   value={author}
                 />
               </div>

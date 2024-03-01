@@ -42,10 +42,26 @@ function Books() {
               <h3>Возможно, Вам понравится</h3>{" "}
               <select onChange={handleSelect}>
                 <option value="Все книги">Все книги</option>
+
+                <hr
+                  style={{
+                    borderBottom: "red 3px solid",
+                  }}
+                />
+                <option value="Детектив">Детектив</option>
+                <hr />
+                <option value="Фантастика">Фантастика</option>
+                <hr />
+                <option value="Приключения">Приключения</option>
+                <hr />
+                <option value="Научная">Научная</option>
+                <hr />
+
                 <option value="Детектив">Детектив</option>
                 <option value="Фантастика">Фантастика</option>
                 <option value="Приключения">Приключения</option>
                 <option value="Научная">Научная</option>
+
                 <option value="Психология">Психология</option>
               </select>
             </div>
