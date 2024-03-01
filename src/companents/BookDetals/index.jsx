@@ -4,7 +4,6 @@ import "./bookDetals.css";
 import { useMainContext } from "../../context/useProduct";
 
 function BookDetals() {
-  const { counter, setCounter } = useMainContext();
   const { detal, setDetal } = useMainContext();
   const { description, setDescription } = useMainContext();
   const { order, setOrder } = useMainContext();
@@ -40,7 +39,6 @@ function BookDetals() {
     let res = savedData.some((il) => {
       return el.id === il.id;
     });
-    console.log(res);
     if (res === false) {
       savedData.push(el);
       localStorage.setItem("orders", JSON.stringify(savedData));
@@ -65,12 +63,12 @@ function BookDetals() {
                 <img src={el.img} alt="" />
                 <div className="detal_book">
                   <h2 className="author">
-                    <span>Author:</span>
+                    <span>Автор:</span>
                     {el.author}
                   </h2>
 
                   <h2>{el.name}</h2>
-                  <p>{el.price * counter}сом</p>
+                  <p>{el.price * el.count}сом</p>
                   <h4
                     style={{
                       fontFamily: "sans-serif",
@@ -106,20 +104,22 @@ function BookDetals() {
                   <div className="countBtns">
                     <button
                       onClick={() => {
-                        setCounter(counter + 1);
-                      }}
-                    >
-                      +
-                    </button>
-                    <h3>{counter}</h3>
-                    <button
-                      onClick={() => {
-                        if (counter > 1) {
-                          setCounter(counter - 1);
+                        if (el.count > 1) {
+                          el.count -= 1;
+                          getProduct();
                         }
                       }}
                     >
                       -
+                    </button>
+                    <h3>{el.count}</h3>
+                    <button
+                      onClick={() => {
+                        el.count += 1;
+                        getProduct();
+                      }}
+                    >
+                      +
                     </button>
                   </div>
                   <button

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useMainContext } from "../../context/useProduct";
 import "./search.css";
 // import Books from "../pages/Home/Books";
@@ -7,8 +7,8 @@ import "./search.css";
 function Search({ nameBooks }) {
   const [searchProduct, setSearchProduct] = useState([]);
   const { bookId } = useParams();
-  // const { setDetal, detal } = useMainContext();
-  const {book, setBook} = useMainContext()
+  const { book, setBook } = useMainContext();
+  const nav = useNavigate();
 
   function getSearch() {
     let data = JSON.parse(localStorage.getItem("books")) || [];
@@ -73,9 +73,15 @@ function Search({ nameBooks }) {
                 {/* </center> */}
               </div>
             </div>
-          ) : (
+          ) : ( 
+            
             res.map((el) => (
-              <div className="block_book">
+              <div
+                onClick={() => {
+                  nav(`/book-detals/${el.id}`);
+                }}
+                className="block_book"
+              >
                 <img src={el.img} alt="" />
                 <h2>{el.name}</h2>
               </div>

@@ -6,7 +6,8 @@
 }
 .detal img {
   width: 390px;
-  height: 500px;
+  height: 570px;
+  border-radius: 5px;
   object-fit: cover;
   border-radius: 10px;
   border: 2px solid rgb(30, 30, 44);
@@ -25,7 +26,7 @@
   margin: 5px 0;
 }
 .detal_book h2 span {
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 2px;
 }
 .detal_book h3 {
@@ -66,4 +67,10 @@
 .description button {
   border: none;
   color: rgb(52, 44, 44);
+}
+.orderPart h4 {
+  display: flex;
+  justify-content: start;
+  font-size: 30px;
+  font-family: sans-serif;
 }

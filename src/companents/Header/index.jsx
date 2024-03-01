@@ -12,7 +12,6 @@ function Header({ setValue, nameBooks }) {
   // const { searchProduct } = useMainContext();
   let nav = useNavigate();
 
-  
   return (
     <>
       <div id="header">
@@ -22,12 +21,13 @@ function Header({ setValue, nameBooks }) {
 
             <div className="header_right">
               <div className="inputs">
-                <input onClick={()=> nav('/search')}
+                <input
+                  onClick={() => nav("/search")}
                   onInput={(e) => {
                     setValue(e.target.value);
                   }}
                   type="text"
-                  placeholder="Search here..."
+                  placeholder="ПОИСК ...."
                   value={nameBooks}
                 />
 
