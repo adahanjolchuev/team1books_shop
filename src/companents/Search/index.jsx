@@ -8,12 +8,8 @@ function Search({ nameBooks }) {
   const [searchProduct, setSearchProduct] = useState([]);
   const { bookId } = useParams();
 
-  const { book, setBook } = useMainContext();
+  const { setBook } = useMainContext();
   const nav = useNavigate();
-
-  // const { setDetal, detal } = useMainContext();
-  const {book, setBook} = useMainContext()
-
 
   function getSearch() {
     let data = JSON.parse(localStorage.getItem("books")) || [];
@@ -79,20 +75,18 @@ function Search({ nameBooks }) {
               </div>
             </div>
           ) : ( 
-            
             res.map((el) => (
-
               <div
                 onClick={() => {
                   nav(`/book-detals/${el.id}`);
                 }}
                 className="block_book"
+                key={el.id} // Adding a key to fix a potential warning
               >
-
-              <div className="block_book">
-
-                <img src={el.img} alt="" />
-                <h2>{el.name}</h2>
+                <div className="block_book">
+                  <img src={el.img} alt="" />
+                  <h2>{el.name}</h2>
+                </div>
               </div>
             ))
           )}
