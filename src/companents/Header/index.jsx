@@ -9,7 +9,6 @@ import { useMainContext } from "../../context/useProduct";
 function Header({ setValue, nameBooks }) {
   const { setModal, modal } = useMainContext();
   const { order } = useMainContext();
-  // const { searchProduct } = useMainContext();
   let nav = useNavigate();
 
   return (
@@ -18,15 +17,11 @@ function Header({ setValue, nameBooks }) {
         <div className="container">
           <div className="header">
             <h1 onClick={() => nav("/")}>BOOKShop</h1>
-
-            <div className="header_right">
+             <div className="header_right">
               <div className="inputs">
-
                 <input
                   onClick={() => nav("/search")}
-
-                <input onClick={()=> nav('/search')}
-
+                  
                   onInput={(e) => {
                     setValue(e.target.value);
                   }}
@@ -34,12 +29,7 @@ function Header({ setValue, nameBooks }) {
                   placeholder="ПОИСК ...."
                   value={nameBooks}
                 />
-
-                <button
-                  onClick={() => {
-                    nav("/search");
-                  }}
-                >
+                <button>
                   <FaSearch />
                 </button>
               </div>

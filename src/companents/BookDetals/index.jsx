@@ -8,7 +8,6 @@ function BookDetals() {
   const { description, setDescription } = useMainContext();
   const { order, setOrder } = useMainContext();
   const { book, setBook } = useMainContext();
-  // const { setPrice } = useMainContext();
   const { bookId } = useParams();
 
   const nav = useNavigate();
@@ -71,7 +70,7 @@ function BookDetals() {
 
                   <p>{el.price * el.count}сом</p>
 
-                  <p>{el.price * counter}сом</p>
+                 
 
                   <h4
                     style={{
@@ -167,7 +166,7 @@ function BookDetals() {
               >
                 <img src={el.img} alt="" />
                 <h2>{el.name}</h2>
-                {/* </Link> */}
+                
                 <p>{el.price}сом</p>
               </div>
             ))}

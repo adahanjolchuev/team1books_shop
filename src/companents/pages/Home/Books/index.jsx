@@ -56,12 +56,6 @@ function Books() {
                 <hr />
                 <option value="Научная">Научная</option>
                 <hr />
-
-                <option value="Детектив">Детектив</option>
-                <option value="Фантастика">Фантастика</option>
-                <option value="Приключения">Приключения</option>
-                <option value="Научная">Научная</option>
-
                 <option value="Психология">Психология</option>
               </select>
             </div>
@@ -86,24 +80,6 @@ function Books() {
                     </div>
                   ))}
             </div>
-            {/* <div
-              onClick={() => setDescription(!description)}
-              style={{
-                display: "flex",
-                justifyContent: "center",
-              }}
-              className="btnYet"
-            >
-              <button
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  transition: "0.6s",
-                }}
-              >
-                {description ? "скрыть" : "Показать ещё"}
-              </button>
-            </div> */}
           </div>
         </div>
       </div>
